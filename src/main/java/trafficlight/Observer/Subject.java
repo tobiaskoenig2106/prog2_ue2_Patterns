@@ -9,5 +9,5 @@ public abstract class Subject {
 
     public abstract void notifyObserver();
 
-    public abstract void update(State state);
+    public abstract void update();
 }

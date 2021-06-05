@@ -5,6 +5,9 @@ import trafficlight.Observer.Subject;
 import trafficlight.gui.TrafficLightGui;
 import trafficlight.states.State;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TrafficLightCtrl extends Subject {
 
     private State greenState;
@@ -21,12 +24,15 @@ public class TrafficLightCtrl extends Subject {
 
     private boolean doRun = true;
 
+    private List<Observer> observerList = new ArrayList<>();
+
     public TrafficLightCtrl() {
         super();
         initStates();
         gui = new TrafficLightGui(this);
         gui.setVisible(true);
         //TODO useful to update the current state
+        update();
     }
 
     private void initStates() {
@@ -35,6 +41,8 @@ public class TrafficLightCtrl extends Subject {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
+                currentState = yellowState;
+                update();
                 return yellowState;
             }
             @Override
@@ -48,6 +56,8 @@ public class TrafficLightCtrl extends Subject {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
+                currentState = yellowState;
+                update();
                 return yellowState;
             }
             @Override
@@ -62,10 +72,14 @@ public class TrafficLightCtrl extends Subject {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
+                    currentState = redState;
+                    update();
                     return redState;
                 }else {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
+                    currentState = greenState;
+                    update();
                     return greenState;
                 }
             }
@@ -115,21 +129,23 @@ public class TrafficLightCtrl extends Subject {
 
     @Override
     public <T extends Observer> void addObserver(T t) {
-
+        observerList.add(t);
     }
 
     @Override
     public <T extends Observer> void removeObserver(T t) {
-
+        observerList.remove(t);
     }
 
     @Override
     public void notifyObserver() {
-
+        for (Observer observer:observerList){
+            observer.update(currentState);
+        }
     }
 
     @Override
-    public void update(State state) {
-
+    public void update() {
+        notifyObserver();
     }
 }

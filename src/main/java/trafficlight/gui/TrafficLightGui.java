@@ -37,6 +37,7 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         ctrl.addObserver(yellow);
         ctrl.addObserver(red);
 
+
     }
 
     private void init() {
