@@ -1,9 +1,11 @@
 package trafficlight.ctrl;
 
+import trafficlight.Observer.Observer;
+import trafficlight.Observer.Subject;
 import trafficlight.gui.TrafficLightGui;
 import trafficlight.states.State;
 
-public class TrafficLightCtrl {
+public class TrafficLightCtrl extends Subject {
 
     private State greenState;
 
@@ -108,5 +110,26 @@ public class TrafficLightCtrl {
 
     public void stop() {
         doRun = false;
+    }
+
+
+    @Override
+    public <T extends Observer> void addObserver(T t) {
+
+    }
+
+    @Override
+    public <T extends Observer> void removeObserver(T t) {
+
+    }
+
+    @Override
+    public void notifyObserver() {
+
+    }
+
+    @Override
+    public void update(State state) {
+
     }
 }
