@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 
 public class TrafficLightGui extends JFrame implements ActionListener {
 
@@ -33,9 +34,13 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         //TODO implement a part of the pattern here
         //create the TrafficLight
         //connect subject and observer
+        green = new TrafficLight(Color.GREEN);
+        yellow = new TrafficLight(Color.YELLOW);
+        red = new TrafficLight(Color.RED);
         ctrl.addObserver(green);
         ctrl.addObserver(yellow);
         ctrl.addObserver(red);
+        ctrl.update();
 
 
     }

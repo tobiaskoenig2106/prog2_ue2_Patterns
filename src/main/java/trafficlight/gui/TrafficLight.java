@@ -24,10 +24,20 @@ public class TrafficLight extends Light implements Observer {
     //TODO implement a part of the pattern here
     @Override
     public void update(State state) {
-        if(state.getColor().equals(on.toString())){
+        String color = on.toString();
+        if (color.contains("r=255,g=255,b=0")){
+            color = "yellow";
+        }else if(color.contains("r=255,g=0,b=0")){
+            color = "red";
+        } else {
+            color = "green";
+        }
+
+
+        if(state.getColor().equals(color)){
             turnOn(true);
         }else{
-            isOn = false;
+            turnOn(false);
         }
     }
 
