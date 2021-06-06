@@ -8,7 +8,9 @@ import trafficlight.states.State;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrafficLightCtrl extends Subject {
+public class TrafficLightCtrl extends Subject{
+
+    private static TrafficLightCtrl ctrl;
 
     private State greenState;
 
@@ -26,14 +28,21 @@ public class TrafficLightCtrl extends Subject {
 
     private List<Observer> observerList = new ArrayList<>();
 
-    public TrafficLightCtrl() {
+    private TrafficLightCtrl() {
         super();
         initStates();
         gui = new TrafficLightGui(this);
         gui.setVisible(true);
-        //TODO useful to update the current state
         update();
     }
+
+    public static TrafficLightCtrl getInstance() {
+        if(ctrl==null){
+            ctrl=new TrafficLightCtrl();
+        }
+        return ctrl;
+    }
+
 
     private void initStates() {
         greenState = new State() {
