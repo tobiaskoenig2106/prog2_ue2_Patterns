@@ -1,3 +1,5 @@
+https://github.com/tobiaskoenig2106/prog2_ue2_Patterns.git
+
 # Traffic Light
 
 Das ist das Codetemplate für die zweite Übung in Programmierung 2.

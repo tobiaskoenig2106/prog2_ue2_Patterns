@@ -1,6 +1,5 @@
 package trafficlight.Observer;
 
-import trafficlight.states.State;
 
 public abstract class Subject {
     public abstract <T extends Observer> void addObserver(T t);
