@@ -157,4 +157,12 @@ public class TrafficLightCtrl extends Subject{
     public void update() {
         notifyObserver();
     }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public void resetState(){
+        initStates();
+    }
 }
