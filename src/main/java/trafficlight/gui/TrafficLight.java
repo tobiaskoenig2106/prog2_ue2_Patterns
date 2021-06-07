@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class TrafficLight extends Light implements Observer {
 
-    TrafficLight(Color color) {
+    public TrafficLight(Color color) {
         super(color);
     }
 
